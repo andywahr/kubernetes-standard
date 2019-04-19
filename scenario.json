@@ -1,0 +1,109 @@
+{
+    "Name": "Standard Kubernetes",
+    "Description": "Locked down Kubernetes cluster",
+    "InfrastructureLocation": {
+        "Repo": "https://github.com/andywahr/kubernetes-standard.git",
+        "Branch": "master",
+        "BuildYaml": "build.yaml"
+    },
+    "DevOpsPlugins": [
+        {
+            "Publisher": "qetza",
+            "Id": "replacetokens",
+            "Version": "3.1.0"
+        }
+    ],
+    "Categories": [
+        {
+            "Title": "Base",
+            "Id": "base",
+            "Choose": "All",
+            "Services": [
+                {
+                    "Title": "Azure DevOps",
+                    "Image": "devops.png",
+                    "Id": "vsts",
+                    "IsAvailable": true
+                },
+                {
+                    "Title": "Log Analytics",
+                    "Image": "log-analytics.png",
+                    "Id": "loganalytics",
+                    "IsAvailable": true
+                },
+                {
+                    "Title": "App Insights",
+                    "Image": "app-insights.png",
+                    "Id": "appinsights",
+                    "IsAvailable": true
+                },
+                {
+                    "Title": "Key Vault",
+                    "Image": "keyvault.png",
+                    "Id": "keyvault",
+                    "IsAvailable": true
+                },
+                {
+                    "Title": "Storage",
+                    "Image": "storage.png",
+                    "Id": "storage",
+                    "IsAvailable": true
+                }
+            ]
+        },
+        {
+            "Title": "Front End Networking",
+            "Id": "front-end-networking",
+            "Choose": "Any",
+            "Services": [
+                {
+                    "Title": "Firewall",
+                    "Id": "firewall",
+                    "Image": "firewall.png",
+                    "IsAvailable": false
+                },
+                {
+                    "Title": "Application Gateway",
+                    "Id": "appgateway",
+                    "Image": "app-gateway.png",
+                    "IsAvailable": true
+                },
+                {
+                    "Title": "API Management",
+                    "Id": "apimgmt",
+                    "Image": "api-mgmt.png"
+                }
+            ]
+        },
+        {
+            "Title": "Kubernetes",
+            "Id": "kubcat",
+            "Choose": "One",
+            "Services": [
+            {
+                    "Title": "Kubernetes",
+                    "Id": "websitekubernetes",
+                    "Image": "kubernetes.png",
+                    "IsAvailable": true,
+                    "RequiresServicePricinpal": true,
+                    "Platforms": [
+                        {
+                            "Title": ".Net Core",
+                            "Id": "webkubcore",
+                            "Repo": "https://github.com/andywahr/contosotravel-web-dotnet.git",
+                            "Branch": "master",
+                            "BuildYaml": "src/web-core-kubernetes.yaml"
+                        },
+                        {
+                            "Title": "Node JS",
+                            "Id": "webkubnode",
+                            "Repo": "https://github.com/andywahr/contosotravel-web-nodejs.git",
+                            "Branch": "master",
+                            "BuildYaml": "/build-web-container.yaml"
+                        }
+                    ]          
+                }
+            ]
+        }
+    ]
+}
